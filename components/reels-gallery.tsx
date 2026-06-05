@@ -3,13 +3,14 @@
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion"
 import { Play, Eye, Heart, Share2 } from "lucide-react"
 import Image from "next/image"
+import { img } from "@/lib/image-path"
 import { useEffect, useRef, useState } from "react"
 
 const reels = [
-  { id: 1, thumbnail: "/images/reel1.jpeg", views: "1.2M", likes: "85K", shares: "12K", company: "Counsel India" },
-  { id: 2, thumbnail: "/images/reel2.jpeg", views: "800K", likes: "45K", shares: "8K", company: "BOP Realty" },
-  { id: 3, thumbnail: "/images/reel3.jpeg", views: "650K", likes: "38K", shares: "6K", company: "Counsel India" },
-  { id: 4, thumbnail: "/images/reel4.jpeg", views: "500K", likes: "32K", shares: "5K", company: "Social Banana" },
+  { id: 1, thumbnail: img("/images/reel1.jpeg"), views: "1.2M", likes: "85K", shares: "12K", company: "Counsel India" },
+  { id: 2, thumbnail: img("/images/reel2.jpeg"), views: "800K", likes: "45K", shares: "8K", company: "BOP Realty" },
+  { id: 3, thumbnail: img("/images/reel3.jpeg"), views: "650K", likes: "38K", shares: "6K", company: "Counsel India" },
+  { id: 4, thumbnail: img("/images/reel4.jpeg"), views: "500K", likes: "32K", shares: "5K", company: "Social Banana" },
 ]
 
 // Circumference of r=80 circle = 2π×80 ≈ 502.65
@@ -325,7 +326,7 @@ export function ReelsGallery() {
             </span>
             <div className="flex items-center justify-center gap-3 mb-3">
               <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center overflow-hidden shadow-lg">
-                <Image src="/images/socialbandanlogo.png" alt="Social Banana" width={32} height={32} className="object-contain" />
+                <Image src={img("/images/socialbandanlogo.png")} alt="Social Banana" width={32} height={32} className="object-contain" />
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white">Social Banana</h2>
             </div>

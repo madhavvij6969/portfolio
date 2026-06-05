@@ -2,13 +2,14 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { img } from "@/lib/image-path"
 
 const testimonials = [
   {
     name: "Shubham Bansal",
     role: "Founder & CEO",
     company: "Ampify Marketing",
-    image: "/images/shubham.jpeg",
+    image: img("/images/shubham.jpeg"),
     text: "What stood out about Madhav was his ability to combine creativity with execution. He understood how to make content feel relatable while still keeping it aligned with brand goals. His curiosity around performance marketing and willingness to experiment made him someone who continuously improved and added value.",
     accent: "#3b82f6",
   },
@@ -16,7 +17,7 @@ const testimonials = [
     name: "Harshit Sinha",
     role: "Founder & CEO",
     company: "Upskill Lab",
-    image: "/images/harshit.jpeg",
+    image: img("/images/harshit.jpeg"),
     text: "Madhav brought a rare mix of creativity and performance-driven thinking. From paid campaigns to organic content strategy, his work helped us strengthen our digital presence, improve lead quality, and build a stronger audience community.",
     accent: "#7c3aed",
   },
@@ -24,7 +25,7 @@ const testimonials = [
     name: "Vishal Joshi",
     role: "CGO & Marketing Head",
     company: "BOP Realty",
-    image: "/images/vishal.jpeg",
+    image: img("/images/vishal.jpeg"),
     text: "I've seen Madhav grow into someone who takes ownership with confidence. His journey has been defined by creative thinking, strong implementation, and the hunger to continuously learn and improve.",
     accent: "#059669",
   },

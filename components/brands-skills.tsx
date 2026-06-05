@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { img } from "@/lib/image-path"
 import {
   siMeta, siGoogleads, siGoogleanalytics, 
   siFigma, siEnvato, 
@@ -104,24 +105,24 @@ function ToolIcon({ tool }: { tool: { name: string; si?: { path: string; hex: st
 }
 
 const brands = [
-  { name: "Godrej",                     logo: "/images/goderj.jpg",                                          whiteBg: true },
-  { name: "DLF",                        logo: "/images/dlf.svg",                                             whiteBg: true },
-  { name: "M3M",                        logo: "/images/m3m.jpg",                                             whiteBg: true },
-  { name: "Gaurs",                      logo: "/images/gaur.png",                                            whiteBg: true },
-  { name: "Sobha",                      logo: "/images/sobha.png",                                           whiteBg: true },
-  { name: "Bhutani",                    logo: "/images/bhutani.png",                                         whiteBg: true },
-  { name: "Danube",                     logo: "/images/danube.png",                                          whiteBg: true },
-  { name: "Dhirubhai Ambani University", logo: "/images/Dhirubhai-Ambani-University-new-logo.jpg",           whiteBg: true },
-  { name: "Medhavi Skill University",   logo: "/images/medhavi.png",                                        whiteBg: true },
-  { name: "Cheesecake & Co.",           logo: "/images/cheescake.jpg",                                      whiteBg: true },
-  { name: "Apara",                      logo: "/images/apara.png",                                          whiteBg: true },
-  { name: "Stockify",                   logo: "/images/stokify.png",                                        whiteBg: true },
-  { name: "BOP Realty",                 logo: "/images/boplog.jpg",                                         whiteBg: true },
-  { name: "Counsel India",              logo: "/images/counsel india.png",                                  whiteBg: true },
-  { name: "Upskill Lab",                logo: "/images/upskills.png",                                       whiteBg: true },
-  { name: "Ampify Marketing",           logo: "/images/socialbandanlogo.png",                               whiteBg: true },
-  { name: "Migsun",                     logo: "/images/migsun.png",                                         whiteBg: true },
-  { name: "Prestige",                   logo: "/images/prestige.png",                                       whiteBg: true },
+  { name: "Godrej",                     logo: img("/images/goderj.jpg"),                                          whiteBg: true },
+  { name: "DLF",                        logo: img("/images/dlf.svg"),                                             whiteBg: true },
+  { name: "M3M",                        logo: img("/images/m3m.jpg"),                                             whiteBg: true },
+  { name: "Gaurs",                      logo: img("/images/gaur.png"),                                            whiteBg: true },
+  { name: "Sobha",                      logo: img("/images/sobha.png"),                                           whiteBg: true },
+  { name: "Bhutani",                    logo: img("/images/bhutani.png"),                                         whiteBg: true },
+  { name: "Danube",                     logo: img("/images/danube.png"),                                          whiteBg: true },
+  { name: "Dhirubhai Ambani University", logo: img("/images/Dhirubhai-Ambani-University-new-logo.jpg"),           whiteBg: true },
+  { name: "Medhavi Skill University",   logo: img("/images/medhavi.png"),                                        whiteBg: true },
+  { name: "Cheesecake & Co.",           logo: img("/images/cheescake.jpg"),                                      whiteBg: true },
+  { name: "Apara",                      logo: img("/images/apara.png"),                                          whiteBg: true },
+  { name: "Stockify",                   logo: img("/images/stokify.png"),                                        whiteBg: true },
+  { name: "BOP Realty",                 logo: img("/images/boplog.jpg"),                                         whiteBg: true },
+  { name: "Counsel India",              logo: img("/images/counsel india.png"),                                  whiteBg: true },
+  { name: "Upskill Lab",                logo: img("/images/upskills.png"),                                       whiteBg: true },
+  { name: "Ampify Marketing",           logo: img("/images/socialbandanlogo.png"),                               whiteBg: true },
+  { name: "Migsun",                     logo: img("/images/migsun.png"),                                         whiteBg: true },
+  { name: "Prestige",                   logo: img("/images/prestige.png"),                                       whiteBg: true },
 ]
 
 const skills = [

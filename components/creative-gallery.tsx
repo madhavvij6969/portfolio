@@ -2,20 +2,21 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { img } from "@/lib/image-path"
 
 const creativeWork = [
-  { id: 1, image: "/images/crea1.png", company: "Counsel India" },
-  { id: 2, image: "/images/crea2.jpg", company: "BOP Realty" },
-  { id: 3, image: "/images/crea3.jpg", company: "Upskill Lab" },
-  { id: 4, image: "/images/crea4.jpg", company: "Social Banana" },
-  { id: 5, image: "/images/crea5.jpg", company: "BOP Realty" },
-  { id: 6, image: "/images/crea6.jpg", company: "Counsel India" },
-  { id: 7, image: "/images/crea7.jpg", company: "Ampify" },
-  { id: 8, image: "/images/crea8.jpg", company: "BOP Realty" },
-  { id: 9, image: "/images/crea9.jpg", company: "Counsel India" },
-  { id: 10, image: "/images/crea10.png", company: "Social Banana" },
-  { id: 11, image: "/images/crea11.jpeg", company: "BOP Realty" },
-  { id: 12, image: "/images/crea12.jpeg", company: "Ampify" },
+  { id: 1, image: img("/images/crea1.png"), company: "Counsel India" },
+  { id: 2, image: img("/images/crea2.jpg"), company: "BOP Realty" },
+  { id: 3, image: img("/images/crea3.jpg"), company: "Upskill Lab" },
+  { id: 4, image: img("/images/crea4.jpg"), company: "Social Banana" },
+  { id: 5, image: img("/images/crea5.jpg"), company: "BOP Realty" },
+  { id: 6, image: img("/images/crea6.jpg"), company: "Counsel India" },
+  { id: 7, image: img("/images/crea7.jpg"), company: "Ampify" },
+  { id: 8, image: img("/images/crea8.jpg"), company: "BOP Realty" },
+  { id: 9, image: img("/images/crea9.jpg"), company: "Counsel India" },
+  { id: 10, image: img("/images/crea10.png"), company: "Social Banana" },
+  { id: 11, image: img("/images/crea11.jpeg"), company: "BOP Realty" },
+  { id: 12, image: img("/images/crea12.jpeg"), company: "Ampify" },
 ]
 
 export function CreativeGallery() {

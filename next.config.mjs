@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env: {
+    NEXT_PUBLIC_BASE_PATH: "/portfolio",
+  },
   output: "export",
   basePath: "/portfolio",
-  assetPrefix: "https://madhavvij6969.github.io/portfolio",
+  assetPrefix: "/portfolio",
   eslint: {
     ignoreDuringBuilds: true,
   },

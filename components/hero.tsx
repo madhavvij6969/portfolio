@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { img } from "@/lib/image-path"
 
 const stats = [
   { value: "₹2Cr+",   label: "Ad Spend Managed",  desc: "Real estate, ed-tech, FMCG & consumer brands" },
@@ -69,7 +70,7 @@ export function Hero() {
               {/* Portrait image */}
               <div className="relative z-10" style={{ width: "min(312px, 70vw)", aspectRatio: "3/4" }}>
                 <Image
-                  src="/images/mdv.png"
+                  src={img("/images/mdv.png")}
                   alt="Madhav Vij"
                   fill
                   priority

@@ -30,7 +30,7 @@ export function Footer() {
               </div>
               <span className="text-white font-black text-lg">Madhav<span className="text-blue-400">.</span></span>
             </div>
-            <p className="text-slate-600 text-xs leading-relaxed mb-5">
+            <p className="text-slate-400 text-xs leading-relaxed mb-5">
               Growth Marketing Strategist helping brands build attention that converts into revenue.
             </p>
             <div className="flex gap-3">
@@ -41,7 +41,7 @@ export function Footer() {
                 { href: "https://wa.me/917838663778", icon: MessageCircle, hover: "hover:text-emerald-400" },
               ].map(({ href, icon: Icon, hover }, i) => (
                 <a key={i} href={href} target="_blank" rel="noopener noreferrer"
-                  className={`text-slate-700 ${hover} transition-colors p-2 rounded-lg hover:bg-white/[0.04]`}>
+                  className={`text-slate-500 ${hover} transition-colors p-2 rounded-lg hover:bg-white/[0.04]`}>
                   <Icon className="h-4 w-4" />
                 </a>
               ))}
@@ -60,7 +60,7 @@ export function Footer() {
               {[["Home","#home"],["About","#about"],["Experience","#experience"],["Work","#reels"],["Contact","#contact"]].map(([name, href]) => (
                 <li key={name}>
                   <button onClick={() => scrollTo(href)}
-                    className="text-slate-600 hover:text-slate-300 transition-colors text-xs font-medium">
+                    className="text-slate-400 hover:text-slate-200 transition-colors text-xs font-medium">
                     {name}
                   </button>
                 </li>
@@ -78,7 +78,7 @@ export function Footer() {
             <h4 className="text-slate-400 text-xs font-semibold uppercase tracking-widest mb-5">Services</h4>
             <ul className="space-y-2.5">
               {["Performance Marketing","Meta Ads","Social Media Strategy","Content Systems","Lead Generation","Creative Direction"].map((s) => (
-                <li key={s} className="text-slate-600 text-xs">{s}</li>
+                <li key={s} className="text-slate-400 text-xs">{s}</li>
               ))}
             </ul>
           </motion.div>
@@ -91,7 +91,7 @@ export function Footer() {
             viewport={{ once: true }}
           >
             <h4 className="text-slate-400 text-xs font-semibold uppercase tracking-widest mb-5">Contact</h4>
-            <div className="space-y-2 text-slate-600 text-xs mb-6">
+            <div className="space-y-2 text-slate-400 text-xs mb-6">
               <p>madhavvij2015@gmail.com</p>
               <p>+91 7838663778</p>
               <p>Ghaziabad, India</p>
@@ -111,8 +111,8 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-3"
           style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
-          <p className="text-slate-700 text-xs">© {new Date().getFullYear()} Madhav Vij. All rights reserved.</p>
-          <p className="text-slate-700 text-xs">Built with Next.js & Tailwind CSS</p>
+          <p className="text-slate-500 text-xs">© {new Date().getFullYear()} Madhav Vij. All rights reserved.</p>
+          <p className="text-slate-500 text-xs">.</p>
         </div>
       </div>
     </footer>

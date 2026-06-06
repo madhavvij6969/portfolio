@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { ArrowRight, Linkedin, MessageCircle } from "lucide-react"
 import Image from "next/image"
 import { img } from "@/lib/image-path"
 
@@ -75,13 +76,11 @@ export function Hero() {
                   fill
                   priority
                   className="object-cover object-top"
-                  style={{
-                    borderRadius: "20px 20px 0 0",
-                    filter: "drop-shadow(-4px 0 30px rgba(124,58,237,0.35))",
-                  }}
+                  style={{ borderRadius: "20px 20px 0 0" }}
                 />
-                <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
-                  style={{ background: "linear-gradient(to top, #080808 0%, transparent 100%)" }} />
+                {/* Bottom fade */}
+                <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+                  style={{ background: "linear-gradient(to top, #080808 0%, #080808 20%, transparent 100%)" }} />
               </div>
 
               {/* Floating stats — only on lg+ */}
@@ -154,7 +153,7 @@ export function Hero() {
                   fontFamily: "'Playfair Display', Georgia, serif",
                   fontWeight: 300,
                   fontStyle: "italic",
-                  fontSize: "clamp(3rem, 14vw, 8.5rem)",
+                  fontSize: "clamp(2.5rem, 10.9vw, 7rem)",
                   lineHeight: 1,
                   letterSpacing: "-0.03em",
                   background: "linear-gradient(135deg, #3b82f6 0%, #6366f1 30%, #8b5cf6 55%, #a855f7 75%, #ec4899 100%)",

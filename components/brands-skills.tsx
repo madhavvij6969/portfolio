@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { img } from "@/lib/image-path"
 import {
   siMeta, siGoogleads, siGoogleanalytics, 
   siFigma, siEnvato, 
@@ -37,7 +36,7 @@ const toolCategories = [
     ],
   },
   {
-    label: "Content & Design", color: "#ec4899", purpose: "Creating visuals, videos, and branded content",
+    label: "Content & Design", color: "#6366f1", purpose: "Creating visuals, videos, and branded content",
     tools: [
       { name: "Canva", hex: "#00C4CC", letter: "C" },
       { name: "CapCut", custom: "capcut" },
@@ -62,7 +61,7 @@ const toolCategories = [
     ],
   },
   {
-    label: "Management", color: "#10b981", purpose: "Scheduling, CRM, email & project coordination",
+    label: "Management", color: "#3b82f6", purpose: "Scheduling, CRM, email & project coordination",
     tools: [
       { name: "Hootsuite", si: siHootsuite },
       { name: "Buffer", si: siBuffer },
@@ -71,7 +70,7 @@ const toolCategories = [
     ],
   },
   {
-    label: "Research", color: "#f59e0b", purpose: "SEO, keyword research & competitor analysis",
+    label: "Research", color: "#a855f7", purpose: "SEO, keyword research & competitor analysis",
     tools: [
       { name: "VidIQ", custom: "vidiq" },
       { name: "SEMrush", si: siSemrush },
@@ -105,24 +104,24 @@ function ToolIcon({ tool }: { tool: { name: string; si?: { path: string; hex: st
 }
 
 const brands = [
-  { name: "Godrej",                     logo: img("/images/goderj.jpg"),                                          whiteBg: true },
-  { name: "DLF",                        logo: img("/images/dlf.svg"),                                             whiteBg: true },
-  { name: "M3M",                        logo: img("/images/m3m.jpg"),                                             whiteBg: true },
-  { name: "Gaurs",                      logo: img("/images/gaur.png"),                                            whiteBg: true },
-  { name: "Sobha",                      logo: img("/images/sobha.png"),                                           whiteBg: true },
-  { name: "Bhutani",                    logo: img("/images/bhutani.png"),                                         whiteBg: true },
-  { name: "Danube",                     logo: img("/images/danube.png"),                                          whiteBg: true },
-  { name: "Dhirubhai Ambani University", logo: img("/images/Dhirubhai-Ambani-University-new-logo.jpg"),           whiteBg: true },
-  { name: "Medhavi Skill University",   logo: img("/images/medhavi.png"),                                        whiteBg: true },
-  { name: "Cheesecake & Co.",           logo: img("/images/cheescake.jpg"),                                      whiteBg: true },
-  { name: "Apara",                      logo: img("/images/apara.png"),                                          whiteBg: true },
-  { name: "Stockify",                   logo: img("/images/stokify.png"),                                        whiteBg: true },
-  { name: "BOP Realty",                 logo: img("/images/boplog.jpg"),                                         whiteBg: true },
-  { name: "Counsel India",              logo: img("/images/counsel india.png"),                                  whiteBg: true },
-  { name: "Upskill Lab",                logo: img("/images/upskills.png"),                                       whiteBg: true },
-  { name: "Ampify Marketing",           logo: img("/images/socialbandanlogo.png"),                               whiteBg: true },
-  { name: "Migsun",                     logo: img("/images/migsun.png"),                                         whiteBg: true },
-  { name: "Prestige",                   logo: img("/images/prestige.png"),                                       whiteBg: true },
+  { name: "Godrej",                     logo: "/images/goderj.jpg",                                        whiteBg: true },
+  { name: "DLF",                        logo: "/images/dlf.svg",                                           whiteBg: true },
+  { name: "M3M",                        logo: "/images/m3m.jpg",                                           whiteBg: true },
+  { name: "Gaurs",                      logo: "/images/gaur.png",                                          whiteBg: true },
+  { name: "Sobha",                      logo: "/images/sobha.png",                                         whiteBg: true },
+  { name: "Bhutani",                    logo: "/images/bhutani.png",                                       whiteBg: true },
+  { name: "Danube",                     logo: "/images/danube.png",                                        whiteBg: true },
+  { name: "Dhirubhai Ambani University", logo: "/images/Dhirubhai-Ambani-University-new-logo.jpg",         whiteBg: true },
+  { name: "Medhavi Skill University",   logo: "/images/medhavi.png",                                      whiteBg: true },
+  { name: "Cheesecake & Co.",           logo: "/images/cheescake.jpg",                                    whiteBg: true },
+  { name: "Apara",                      logo: "/images/apara.png",                                        whiteBg: true },
+  { name: "Stockify",                   logo: "/images/stokify.png",                                      whiteBg: true },
+  { name: "BOP Realty",                 logo: "/images/boplog.jpg",                                       whiteBg: true },
+  { name: "Counsel India",              logo: "/images/councelindialogo.jpg",                                whiteBg: true },
+  { name: "Upskill Lab",                logo: "/images/upskills.png",                                     whiteBg: true },
+  { name: "Ampify Marketing",           logo: "/images/socialbandanlogo.png",                             whiteBg: true },
+  { name: "Migsun",                     logo: "/images/migsun.png",                                       whiteBg: true },
+  { name: "Prestige",                   logo: "/images/prestige.png",                                     whiteBg: true },
 ]
 
 const skills = [
@@ -216,7 +215,7 @@ export function BrandsSkills() {
           <motion.div {...fadeUp(0)}>
             <div className="section-label"><span className="w-6 h-px" style={{background:"#a78bfa"}} />Brands</div>
             <h2 className="text-4xl md:text-5xl font-black text-white mb-3">Brands I've Marketed For</h2>
-            <div className="w-16 h-0.5 rounded-full mb-4" style={{ background: "linear-gradient(90deg,#f59e0b,#ec4899)" }} />
+            <div className="w-16 h-0.5 rounded-full mb-4" style={{ background: "linear-gradient(90deg,#3b82f6,#8b5cf6)" }} />
             <p className="text-slate-500 text-base">Across real estate, ed-tech, consumer brands, and high-growth businesses.</p>
           </motion.div>
         </div>
@@ -256,7 +255,7 @@ export function BrandsSkills() {
             <motion.div {...fadeUp(0)}>
               <div className="section-label"><span className="w-6 h-px" style={{background:"#a78bfa"}} />Capabilities</div>
               <h2 className="text-3xl md:text-4xl font-black text-white mb-2">Core Capabilities</h2>
-              <div className="w-14 h-0.5 rounded-full mb-3" style={{ background: "linear-gradient(90deg,#a78bfa,#ec4899)" }} />
+              <div className="w-14 h-0.5 rounded-full mb-3" style={{ background: "linear-gradient(90deg,#3b82f6,#8b5cf6)" }} />
               <p className="text-slate-500 text-sm mb-7">A blend of strategy, execution, creative thinking, and performance marketing.</p>
 
               <div className="flex flex-col gap-2.5">
@@ -288,7 +287,7 @@ export function BrandsSkills() {
             <motion.div {...fadeUp(0.1)}>
               <div className="section-label"><span className="w-6 h-px" style={{background:"#a78bfa"}} />Stack</div>
               <h2 className="text-3xl md:text-4xl font-black text-white mb-2">Tools & Stack</h2>
-              <div className="w-14 h-0.5 rounded-full mb-3" style={{ background: "linear-gradient(90deg,#f59e0b,#ec4899)" }} />
+              <div className="w-14 h-0.5 rounded-full mb-3" style={{ background: "linear-gradient(90deg,#3b82f6,#8b5cf6)" }} />
               <p className="text-slate-500 text-sm mb-7">Platforms and systems I actively use across content, campaigns, analytics, and operations.</p>
 
               <motion.div

@@ -112,7 +112,7 @@ export function Footer() {
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-3"
           style={{ borderTop: "1px solid rgba(255,255,255,0.04)" }}>
           <p className="text-slate-500 text-xs">© {new Date().getFullYear()} Madhav Vij. All rights reserved.</p>
-          <p className="text-slate-500 text-xs">.</p>
+          <p className="text-slate-500 text-xs">Built with Next.js & Tailwind CSS</p>
         </div>
       </div>
     </footer>

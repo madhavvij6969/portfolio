@@ -1,2 +1,2 @@
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
+const basePath = "/portfolio"
 export const img = (src: string) => `${basePath}${src}`

@@ -326,7 +326,7 @@ export function ReelsGallery() {
             </span>
             <div className="flex items-center justify-center gap-3 mb-3">
               <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center overflow-hidden shadow-lg">
-                <Image src={img("/images/socialbandanlogo.png")} alt="Social Banana" width={32} height={32} className="object-contain" />
+                <Image src={img("/images/socialbananalogo.png")} alt="Social Banana" width={32} height={32} className="object-contain" />
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white">Social Banana</h2>
             </div>

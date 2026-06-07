@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { img } from "@/lib/image-path"
 
 type Highlight = { value: string; label: string }
 type ExpType = {
@@ -23,7 +24,7 @@ const experiences: ExpType[] = [
     role: "Assistant Marketing Manager",
     period: "Nov 2025 – Present",
     type: "Full-time",
-    logo: "/images/boplog.jpg",
+    logo: img("/images/boplog.jpg"),
     promoted: true,
     description: "Promoted from Senior Digital Marketing Executive after building and scaling the company's content and performance marketing ecosystem.",
     bullets: [
@@ -44,7 +45,7 @@ const experiences: ExpType[] = [
     role: "Senior Digital Marketing Executive",
     period: "Oct 2024 – Oct 2025",
     type: "Full-time",
-    logo: "/images/boplog.jpg",
+    logo: img("/images/boplog.jpg"),
     description: "Handled end-to-end social media management, Meta campaigns, creative coordination, and performance tracking for real estate projects.",
     bullets: [
       "Campaign execution, ad optimization, organic content, reel scripting, and lead-generation campaigns.",
@@ -58,7 +59,7 @@ const experiences: ExpType[] = [
     role: "Digital Marketing Executive",
     period: "Jun 2024 – Oct 2024",
     type: "Full-time",
-    logo: "/images/councelindialogo.jpg",
+    logo: img("/images/counselindialogo.jpg"),
     promoted: true,
     description: "Promoted within four months based on performance and ownership. Scaled organic presence and drove significant revenue through content.",
     bullets: [
@@ -79,7 +80,7 @@ const experiences: ExpType[] = [
     role: "Digital Marketing Intern",
     period: "Feb 2024 – May 2024",
     type: "Internship",
-    logo: "/images/councelindialogo.jpg",
+    logo: img("/images/counselindialogo.jpg"),
     description: "Started with content support, creative design, and execution tasks — building the foundation for everything that followed.",
     bullets: [
       "Worked on ad creatives, thumbnails, reel covers, brochures, e-books, copywriting, and SEO research.",
@@ -96,7 +97,7 @@ const freelance: ExpType[] = [
     role: "Freelance Marketing Consultant",
     period: "Jun 2025 – Dec 2025",
     type: "Freelance",
-    logo: "/images/ampify.jpeg",
+    logo: img("/images/ampify.jpeg"),
     description: "Worked across multiple client accounts spanning Ed-Tech, FMCG, FinTech, Fashion, and Food & Beverage.",
     bullets: [
       "Managed campaign strategy, paid media optimization, content direction, and growth execution.",
@@ -114,7 +115,7 @@ const freelance: ExpType[] = [
     role: "Freelance Growth Consultant",
     period: "2023 – Present",
     type: "Freelance",
-    logo: "/images/upskills.png",
+    logo: img("/images/upskill.png"),
     description: "Built the brand's digital presence from the ground up through organic content strategy and paid lead generation systems.",
     bullets: [
       "Focused on Meta ads, lead quality, funnel optimization, and audience building.",

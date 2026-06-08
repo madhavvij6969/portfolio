@@ -115,7 +115,7 @@ const freelance: ExpType[] = [
     role: "Freelance Growth Consultant",
     period: "2023 – Present",
     type: "Freelance",
-    logo: img("/images/upskill.png"),
+    logo: img("/images/upskilllogo.jpg"),
     description: "Built the brand's digital presence from the ground up through organic content strategy and paid lead generation systems.",
     bullets: [
       "Focused on Meta ads, lead quality, funnel optimization, and audience building.",

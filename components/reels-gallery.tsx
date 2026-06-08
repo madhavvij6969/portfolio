@@ -20,21 +20,19 @@ const gridReels = [
     company: "Counsel India",
     views: "4.1M",
     desc: '"Me going back to my best friend after every minor mental health inconvenience"',
-    insight: "Meme format + mental health honesty = instant shareability. People didn't just watch — they sent it to their best friends.",
+   
   },
   {
     thumbnail: img("/images/reel3.jpeg"),
     company: "Social Banana",
     views: "2.9M",
     desc: '"When KitKat made the cutest ad the whole country loved"',
-    insight: "Nostalgia + iconic creative + zero over-explanation. Let the ad speak. Marketers and non-marketers both felt it.",
   },
   {
     thumbnail: img("/images/reel4.jpeg"),
     company: "BOP Realty",
     views: "800K+",
     desc: '"And almost nobody is talking about what it means for real estate & investors"',
-    insight: "Information gap hook. Made viewers feel they were about to hear something others were missing. Real estate content rarely feels urgent — this one did.",
   },
 ]
 

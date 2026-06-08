@@ -119,7 +119,7 @@ const brands = [
   { name: "Stockify",                   logo: img("/images/stokify.png"),                                    whiteBg: true },
   { name: "BOP Realty",                 logo: img("/images/boplog.jpg"),                                    whiteBg: true },
   { name: "Counsel India",              logo: img("/images/councelindialogo.jpeg"),                          whiteBg: true },
-  { name: "Upskill Lab",                logo: img("/images/upskills.png"),                                   whiteBg: true },
+  { name: "Upskill Lab",                logo: img("/images/upskilllogo.jpg"),                                whiteBg: true },
   { name: "Social Banana",              logo: img("/images/socialbandanlogo.png"),                           whiteBg: true },
   { name: "Ampify Marketing",           logo: img("/images/ampify.jpeg"),                                   whiteBg: true },
   { name: "Migsun",                     logo: img("/images/migsun.png"),                                    whiteBg: true },

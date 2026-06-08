@@ -1,238 +1,50 @@
 "use client"
 
-import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion"
-import { Play, Eye, Heart, Share2 } from "lucide-react"
+import { motion } from "framer-motion"
+import { Play } from "lucide-react"
 import Image from "next/image"
 import { img } from "@/lib/image-path"
-import { useEffect, useRef, useState } from "react"
 
-const reels = [
-  { id: 1, thumbnail: img("/images/reel1.jpeg"), views: "1.2M", likes: "85K", shares: "12K", company: "Counsel India" },
-  { id: 2, thumbnail: img("/images/reel2.jpeg"), views: "800K", likes: "45K", shares: "8K", company: "BOP Realty" },
-  { id: 3, thumbnail: img("/images/reel3.jpeg"), views: "650K", likes: "38K", shares: "6K", company: "Counsel India" },
-  { id: 4, thumbnail: img("/images/reel4.jpeg"), views: "500K", likes: "32K", shares: "5K", company: "Social Banana" },
-]
-
-// Circumference of r=80 circle = 2π×80 ≈ 502.65
-const CIRC = 502.65
-
-function CountUp({ target, duration, delay }: { target: number; duration: number; delay: number }) {
-  const val = useMotionValue(0)
-  const rounded = useTransform(val, (v) => Math.floor(v).toLocaleString())
-  const [display, setDisplay] = useState("0")
-  const ref = useRef<HTMLSpanElement>(null)
-  const inView = useInView(ref, { once: true })
-
-  useEffect(() => {
-    if (!inView) return
-    const timeout = setTimeout(() => {
-      const controls = animate(val, target, { duration, ease: "easeOut" })
-      return () => controls.stop()
-    }, delay * 1000)
-    return () => clearTimeout(timeout)
-  }, [inView])
-
-  useEffect(() => rounded.on("change", setDisplay), [rounded])
-
-  return <span ref={ref}>{display}</span>
+const heroReel = {
+  thumbnail: img("/images/reel1.jpeg"),
+  company: "Counsel India",
+  views: "30.4M",
+  viewsLabel: "organic views — zero paid boost",
+  desc: '"How it feels when you express your emotions in front of an emotionally unavailable person"',
+  insight: "Didn't sell anything. Didn't mention a brand. Just held up a mirror to something millions of people feel but never say out loud. When content makes someone think \"this is me\" — it travels. This reel alone generated ₹6–8L/month in organic revenue for the brand.",
 }
 
-function AnalyticsCard() {
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: "-80px" })
+const gridReels = [
+  {
+    thumbnail: img("/images/reel2.jpeg"),
+    company: "Counsel India",
+    views: "4.1M",
+    desc: '"Me going back to my best friend after every minor mental health inconvenience"',
+    insight: "Meme format + mental health honesty = instant shareability. People didn't just watch — they sent it to their best friends.",
+  },
+  {
+    thumbnail: img("/images/reel3.jpeg"),
+    company: "Social Banana",
+    views: "2.9M",
+    desc: '"When KitKat made the cutest ad the whole country loved"',
+    insight: "Nostalgia + iconic creative + zero over-explanation. Let the ad speak. Marketers and non-marketers both felt it.",
+  },
+  {
+    thumbnail: img("/images/reel4.jpeg"),
+    company: "BOP Realty",
+    views: "800K+",
+    desc: '"And almost nobody is talking about what it means for real estate & investors"',
+    insight: "Information gap hook. Made viewers feel they were about to hear something others were missing. Real estate content rarely feels urgent — this one did.",
+  },
+]
 
-  // Ring draw: strokeDashoffset goes from CIRC (hidden) to 125 (final position)
-  const ringOffset = useMotionValue(CIRC)
-  const [glowVisible, setGlowVisible] = useState(false)
-  const [numberVisible, setNumberVisible] = useState(false)
-  const [legendVisible, setLegendVisible] = useState(false)
-  const [reachedVisible, setReachedVisible] = useState(false)
-  const [growthVisible, setGrowthVisible] = useState(false)
-  const [pulseActive, setPulseActive] = useState(false)
-
-  useEffect(() => {
-    if (!inView) return
-
-    // 0.3s → ring starts drawing → completes at 2.5s
-    setTimeout(() => {
-      animate(ringOffset, 125, { duration: 2.2, ease: "easeInOut" })
-    }, 300)
-
-    // 0.8s → glow
-    setTimeout(() => setGlowVisible(true), 800)
-    // 1.0s → number counts
-    setTimeout(() => setNumberVisible(true), 1000)
-    // 2.8s → legend
-    setTimeout(() => setLegendVisible(true), 2800)
-    // 3.2s → accounts reached
-    setTimeout(() => setReachedVisible(true), 3200)
-    // 3.5s → growth %
-    setTimeout(() => setGrowthVisible(true), 3500)
-    // 4.0s → pulse
-    setTimeout(() => setPulseActive(true), 4000)
-  }, [inView])
-
+function PlayButton() {
   return (
-    <div ref={ref} className="w-full max-w-sm mx-auto">
-      {/* Card fade in at 0.0s */}
-      <motion.div
-        initial={{ opacity: 0, y: 24, scale: 0.97 }}
-        animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="rounded-3xl overflow-hidden relative"
-        style={{
-          background: "linear-gradient(160deg,#111827 0%,#0d0d0d 100%)",
-          border: "1px solid rgba(255,255,255,0.08)",
-          boxShadow: "0 32px 80px rgba(0,0,0,0.6)",
-        }}
-      >
-        {/* Top shimmer */}
-        <div className="h-px w-full" style={{ background: "linear-gradient(90deg,transparent,rgba(245,158,11,0.5),transparent)" }} />
-
-        <div className="p-6">
-          {/* Filter row */}
-          <div className="flex items-center justify-between mb-6">
-            <span className="text-xs font-medium px-3 py-1.5 rounded-full"
-              style={{ background: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.08)" }}>
-              Last 30 days
-            </span>
-            <span className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>29 Apr – 28 May</span>
-          </div>
-
-          {/* Donut */}
-          <div className="flex flex-col items-center mb-6">
-            <div className="relative" style={{ width: 200, height: 200 }}>
-
-              {/* Glow behind ring — appears at 0.8s */}
-              <motion.div
-                className="absolute inset-0 rounded-full pointer-events-none"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: glowVisible ? 1 : 0 }}
-                transition={{ duration: 0.8 }}
-                style={{
-                  background: "radial-gradient(circle, rgba(124,58,237,0.25) 0%, transparent 70%)",
-                  filter: "blur(16px)",
-                }}
-              />
-
-              {/* Continuous pulse ring at 4.0s */}
-              {pulseActive && (
-                <motion.div
-                  className="absolute inset-0 rounded-full pointer-events-none"
-                  animate={{ scale: [1, 1.08, 1], opacity: [0.3, 0, 0.3] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                  style={{ border: "2px solid rgba(124,58,237,0.4)", borderRadius: "50%" }}
-                />
-              )}
-
-              <svg width="200" height="200" viewBox="0 0 200 200" style={{ transform: "rotate(-90deg)" }}>
-                <defs>
-                  <linearGradient id="pg2" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#6d28d9" />
-                    <stop offset="100%" stopColor="#a855f7" />
-                  </linearGradient>
-                </defs>
-                {/* Track */}
-                <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="20" />
-                {/* Purple arc — animates from 0.3s */}
-                <motion.circle
-                  cx="100" cy="100" r="80"
-                  fill="none"
-                  stroke="url(#pg2)"
-                  strokeWidth="20"
-                  strokeLinecap="round"
-                  strokeDasharray={`${CIRC}`}
-                  style={{ strokeDashoffset: ringOffset }}
-                />
-                {/* Pink 0.9% — appears with legend at 2.8s */}
-                <motion.circle
-                  cx="100" cy="100" r="80"
-                  fill="none"
-                  stroke="#f472b6"
-                  strokeWidth="20"
-                  strokeLinecap="round"
-                  strokeDasharray={`5 ${CIRC - 5}`}
-                  strokeDashoffset={125}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: legendVisible ? 1 : 0 }}
-                  transition={{ duration: 0.4 }}
-                />
-              </svg>
-
-              {/* Center number */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="text-xs mb-1" style={{ color: "rgba(255,255,255,0.35)" }}>Views</span>
-                <span className="text-3xl font-black text-white leading-none tracking-tight">
-                  {numberVisible ? <><CountUp target={6251089} duration={1.5} delay={0} /></> : "0"}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Legend — slides in at 2.8s */}
-          <motion.div
-            className="space-y-2.5 mb-5"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: legendVisible ? 1 : 0, y: legendVisible ? 0 : 10 }}
-            transition={{ duration: 0.5 }}
-          >
-            {[
-              { color: "#f472b6", label: "Followers", pct: "0.9%" },
-              { color: "#a855f7", label: "Non-followers", pct: "99.1%" },
-            ].map((l) => (
-              <div key={l.label} className="flex items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <span className="w-2.5 h-2.5 rounded-full" style={{ background: l.color }} />
-                  <span className="text-xs" style={{ color: "rgba(255,255,255,0.45)" }}>{l.label}</span>
-                </div>
-                <span className="text-xs font-bold text-white">{l.pct}</span>
-              </div>
-            ))}
-          </motion.div>
-
-          {/* Divider */}
-          <motion.div
-            className="mb-5"
-            style={{ height: 1, background: "rgba(255,255,255,0.06)" }}
-            initial={{ scaleX: 0, originX: 0 }}
-            animate={{ scaleX: reachedVisible ? 1 : 0 }}
-            transition={{ duration: 0.4 }}
-          />
-
-          {/* Accounts reached — at 3.2s */}
-          <div className="flex items-center justify-between">
-            <motion.span
-              className="text-xs"
-              style={{ color: "rgba(255,255,255,0.4)" }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: reachedVisible ? 1 : 0 }}
-              transition={{ duration: 0.4 }}
-            >
-              Accounts reached
-            </motion.span>
-            <div className="text-right">
-              <motion.div
-                className="text-sm font-bold text-white"
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: reachedVisible ? 1 : 0, y: reachedVisible ? 0 : 6 }}
-                transition={{ duration: 0.4 }}
-              >
-                {reachedVisible && <CountUp target={4468087} duration={1.2} delay={0} />}
-              </motion.div>
-              {/* Growth % — at 3.5s */}
-              <motion.div
-                className="text-xs font-bold"
-                style={{ color: "#4ade80" }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: growthVisible ? 1 : 0, scale: growthVisible ? 1 : 0.8 }}
-                transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
-              >
-                +737.3%
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="w-12 h-12 rounded-full flex items-center justify-center"
+        style={{ background: "rgba(255,255,255,0.15)", border: "1.5px solid rgba(255,255,255,0.4)" }}>
+        <Play className="w-4 h-4 text-white ml-0.5" fill="white" />
+      </div>
     </div>
   )
 }
@@ -245,63 +57,109 @@ export function ReelsGallery() {
         <div className="absolute top-1/2 right-0 w-[500px] h-[500px] rounded-full opacity-[0.04] pointer-events-none -translate-y-1/2"
           style={{ background: "radial-gradient(circle,#7c3aed,transparent 70%)" }} />
 
-        <div className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+        <div className="relative max-w-3xl mx-auto px-5 sm:px-8">
+
+          {/* Header */}
           <motion.div
-            initial={{ opacity: 0, y: 36 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="mb-14"
+            className="mb-8"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3">Viral Reels</h2>
-            <div className="w-16 h-0.5 rounded-full mb-4" style={{ background: "linear-gradient(90deg,#3b82f6,#7c3aed)" }} />
-            <p className="text-slate-500 text-base max-w-2xl">
-              45M+ organic views across platforms. Content built on hooks, storytelling, and platform-native execution.
+            <p className="text-xs font-medium uppercase tracking-widest mb-2" style={{ color: "#666" }}>
+              content that actually travelled
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-medium text-white mb-1">45M+ organic views across platforms.</h2>
+            <p className="text-sm italic" style={{ color: "#888" }}>
+              Every reel here started with one question — why would someone stop scrolling for this?
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-            {reels.map((reel, index) => (
-              <motion.div
-                key={reel.id}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                viewport={{ once: true }}
-                whileHover={{ y: -6 }}
-                className="group relative rounded-2xl overflow-hidden cursor-pointer"
-                style={{ border: "1px solid rgba(255,255,255,0.07)" }}
-              >
-                <div className="relative aspect-[9/16]">
-                  <Image src={reel.thumbnail} alt={`Reel ${reel.id}`} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <div className="w-14 h-14 rounded-full flex items-center justify-center backdrop-blur-sm"
-                      style={{ background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)" }}>
-                      <Play className="h-5 w-5 text-white ml-0.5" fill="white" />
-                    </div>
+          {/* Hero card */}
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            viewport={{ once: true }}
+            className="rounded-2xl overflow-hidden mb-3"
+            style={{ border: "0.5px solid #222", background: "#111" }}
+          >
+            <div className="flex flex-col sm:grid sm:grid-cols-[220px_1fr]">
+              {/* Thumbnail */}
+              <div className="relative overflow-hidden" style={{ minHeight: 260 }}>
+                <Image
+                  src={heroReel.thumbnail}
+                  alt={heroReel.desc}
+                  fill
+                  className="object-cover"
+                />
+                <PlayButton />
+              </div>
+
+              {/* Content */}
+              <div className="p-6 sm:p-7 flex flex-col justify-between">
+                <div>
+                  <span className="inline-block text-[10px] font-medium uppercase tracking-wider px-2.5 py-1 rounded-full mb-3"
+                    style={{ background: "#1a1a1a", color: "#888", border: "0.5px solid #333" }}>
+                    {heroReel.company}
+                  </span>
+                  <div className="text-4xl sm:text-5xl font-medium text-white leading-none mb-1">{heroReel.views}</div>
+                  <div className="text-xs mb-4" style={{ color: "#555" }}>{heroReel.viewsLabel}</div>
+                  <div className="text-sm sm:text-base font-medium leading-relaxed mb-4" style={{ color: "#e0e0e0" }}>
+                    {heroReel.desc}
                   </div>
-                  <div className="absolute top-3 left-3">
-                    <span className="text-[10px] font-semibold text-white px-2.5 py-1 rounded-full backdrop-blur-sm"
-                      style={{ background: "rgba(59,130,246,0.8)" }}>
-                      {reel.company}
-                    </span>
-                  </div>
+                  <div className="w-full h-px mb-4" style={{ background: "#222" }} />
+                  <p className="text-[10px] font-medium uppercase tracking-widest mb-1.5" style={{ color: "#555" }}>Why it worked</p>
+                  <p className="text-xs italic leading-relaxed" style={{ color: "#888" }}>{heroReel.insight}</p>
                 </div>
-                <div className="p-3 flex justify-between" style={{ background: "rgba(255,255,255,0.025)" }}>
-                  {[
-                    { icon: Eye, val: reel.views },
-                    { icon: Heart, val: reel.likes },
-                    { icon: Share2, val: reel.shares },
-                  ].map(({ icon: Icon, val }, i) => (
-                    <span key={i} className="flex items-center gap-1 text-slate-500 text-xs hover:text-slate-300 transition-colors">
-                      <Icon className="h-3 w-3" /> {val}
-                    </span>
-                  ))}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Grid of 3 */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {gridReels.map((reel, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.08, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                viewport={{ once: true }}
+                className="rounded-2xl overflow-hidden"
+                style={{ border: "0.5px solid #1e1e1e", background: "#111" }}
+              >
+                {/* Thumbnail */}
+                <div className="relative overflow-hidden" style={{ aspectRatio: "9/14" }}>
+                  <Image src={reel.thumbnail} alt={reel.desc} fill className="object-cover" />
+                  <PlayButton />
+                </div>
+
+                {/* Body */}
+                <div className="p-4">
+                  <p className="text-[10px] font-medium uppercase tracking-wider mb-1" style={{ color: "#555" }}>{reel.company}</p>
+                  <div className="text-xl font-medium text-white mb-1">{reel.views}</div>
+                  <p className="text-xs font-medium leading-snug mb-3" style={{ color: "#ccc" }}>{reel.desc}</p>
+                  <div className="w-full h-px mb-3" style={{ background: "#222" }} />
+                  <p className="text-[10px] font-medium uppercase tracking-widest mb-1" style={{ color: "#555" }}>Why it worked</p>
+                  <p className="text-xs italic leading-relaxed" style={{ color: "#666" }}>{reel.insight}</p>
                 </div>
               </motion.div>
             ))}
           </div>
+
+          {/* Bottom quote */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center text-xs italic pt-8"
+            style={{ color: "#444" }}
+          >
+            "The best content doesn't feel like content."
+          </motion.p>
+
         </div>
       </section>
 
@@ -312,7 +170,6 @@ export function ReelsGallery() {
 
         <div className="relative max-w-6xl mx-auto px-5 sm:px-8 lg:px-10">
 
-          {/* Section label */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -326,19 +183,14 @@ export function ReelsGallery() {
             </span>
             <div className="flex items-center justify-center gap-3 mb-3">
               <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center overflow-hidden shadow-lg">
-                <Image src={img("/images/socialbananalogo.png")} alt="Social Banana" width={32} height={32} className="object-contain" />
+                <Image src={img("/images/socialbandanlogo.png")} alt="Social Banana" width={32} height={32} className="object-contain" />
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white">Social Banana</h2>
             </div>
-            <p className="text-slate-500 text-base max-w-xl mx-auto">
-              A marketing lab. Zero paid push. Pure experimentation.
-            </p>
+            <p className="text-slate-500 text-base max-w-xl mx-auto">A marketing lab. Zero paid push. Pure experimentation.</p>
           </motion.div>
 
-          {/* Main grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-
-            {/* Left — content */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -350,7 +202,6 @@ export function ReelsGallery() {
                 Started as a personal experiment — can good marketing thinking build an audience on its own?
                 No paid promotion. No shortcuts. Just ideas, observations, and consistency.
               </p>
-
               <div className="space-y-3">
                 {[
                   { n: "01", text: "Why people stop scrolling" },
@@ -364,13 +215,11 @@ export function ReelsGallery() {
                   </div>
                 ))}
               </div>
-
               <blockquote className="border-l-2 border-yellow-500/50 pl-4">
                 <p className="text-slate-400 italic text-sm leading-relaxed">
                   "If you want to understand how I think before we work together — Social Banana is probably the clearest answer."
                 </p>
               </blockquote>
-
               <a
                 href="https://instagram.com/socialbananaa"
                 target="_blank"
@@ -382,16 +231,20 @@ export function ReelsGallery() {
               </a>
             </motion.div>
 
-            {/* Right — Animated Analytics Card */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
+              className="w-full max-w-sm mx-auto"
             >
-              <AnalyticsCard />
+              <img
+                src={img("/images/views.jpeg")}
+                alt="Social Banana Stats"
+                className="w-full rounded-3xl object-cover"
+                style={{ border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0 32px 80px rgba(0,0,0,0.6)" }}
+              />
             </motion.div>
-
           </div>
         </div>
       </section>

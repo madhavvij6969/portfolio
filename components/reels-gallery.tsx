@@ -53,11 +53,14 @@ export function ReelsGallery() {
   return (
     <>
       {/* ─── REELS ─── */}
-      <section id="reels" className="relative py-16 sm:py-28 overflow-hidden" style={{ background: "#030712" }}>
-        <div className="absolute top-1/2 right-0 w-[500px] h-[500px] rounded-full opacity-[0.04] pointer-events-none -translate-y-1/2"
-          style={{ background: "radial-gradient(circle,#7c3aed,transparent 70%)" }} />
+      <section id="reels" className="relative py-20 sm:py-32 overflow-hidden" style={{ background: "#080808" }}>
+        {/* Background glows */}
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full opacity-[0.06] pointer-events-none"
+          style={{ background: "radial-gradient(circle,#7c3aed,transparent 70%)", filter: "blur(60px)" }} />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full opacity-[0.04] pointer-events-none"
+          style={{ background: "radial-gradient(circle,#3b82f6,transparent 70%)", filter: "blur(60px)" }} />
 
-        <div className="relative max-w-3xl mx-auto px-5 sm:px-8">
+        <div className="relative max-w-6xl mx-auto px-5 sm:px-8 lg:px-10">
 
           {/* Header */}
           <motion.div
@@ -65,100 +68,118 @@ export function ReelsGallery() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="mb-8"
+            className="mb-12"
           >
-            <p className="text-xs font-medium uppercase tracking-widest mb-2" style={{ color: "#666" }}>
-              content that actually travelled
-            </p>
-            <h2 className="text-2xl sm:text-3xl font-medium text-white mb-1">45M+ organic views across platforms.</h2>
-            <p className="text-sm italic" style={{ color: "#888" }}>
+            <div className="flex items-center gap-2 mb-4">
+              <span className="w-6 h-px" style={{ background: "#a78bfa" }} />
+              <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: "#a78bfa" }}>content that actually travelled</span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-3 leading-tight">
+              45M+ organic views.<br />
+              <span style={{ background: "linear-gradient(135deg,#a78bfa,#60a5fa)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Zero paid boost.</span>
+            </h2>
+            <p className="text-base italic max-w-xl" style={{ color: "#666" }}>
               Every reel here started with one question — why would someone stop scrolling for this?
             </p>
           </motion.div>
 
           {/* Hero card */}
           <motion.div
-            initial={{ opacity: 0, y: 28 }}
+            initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true }}
-            className="rounded-2xl overflow-hidden mb-3"
-            style={{ border: "0.5px solid #222", background: "#111" }}
+            className="group relative rounded-3xl overflow-hidden mb-4"
+            style={{ border: "1px solid rgba(255,255,255,0.08)", background: "linear-gradient(135deg,#111116,#0d0d12)" }}
           >
-            <div className="flex flex-col sm:grid sm:grid-cols-[220px_1fr]">
+            {/* Top shimmer line */}
+            <div className="absolute top-0 left-0 right-0 h-px"
+              style={{ background: "linear-gradient(90deg,transparent,rgba(167,139,250,0.5),transparent)" }} />
+
+            <div className="flex flex-col md:grid md:grid-cols-[280px_1fr]">
               {/* Thumbnail */}
-              <div className="relative overflow-hidden" style={{ minHeight: 260 }}>
-                <Image
-                  src={heroReel.thumbnail}
-                  alt={heroReel.desc}
-                  fill
-                  className="object-cover"
-                />
+              <div className="relative overflow-hidden" style={{ minHeight: 320 }}>
+                <Image src={heroReel.thumbnail} alt={heroReel.desc} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to right, transparent 60%, #111116)" }} />
+                <div className="absolute inset-0 md:hidden" style={{ background: "linear-gradient(to top, #111116 10%, transparent)" }} />
                 <PlayButton />
+                {/* Views badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full"
+                    style={{ background: "rgba(167,139,250,0.15)", color: "#a78bfa", border: "1px solid rgba(167,139,250,0.3)", backdropFilter: "blur(8px)" }}>
+                    {heroReel.company}
+                  </span>
+                </div>
               </div>
 
               {/* Content */}
-              <div className="p-6 sm:p-7 flex flex-col justify-between">
-                <div>
-                  <span className="inline-block text-[10px] font-medium uppercase tracking-wider px-2.5 py-1 rounded-full mb-3"
-                    style={{ background: "#1a1a1a", color: "#888", border: "0.5px solid #333" }}>
-                    {heroReel.company}
-                  </span>
-                  <div className="text-4xl sm:text-5xl font-medium text-white leading-none mb-1">{heroReel.views}</div>
-                  <div className="text-xs mb-4" style={{ color: "#555" }}>{heroReel.viewsLabel}</div>
-                  <div className="text-sm sm:text-base font-medium leading-relaxed mb-4" style={{ color: "#e0e0e0" }}>
-                    {heroReel.desc}
-                  </div>
-                  <div className="w-full h-px mb-4" style={{ background: "#222" }} />
-                  <p className="text-[10px] font-medium uppercase tracking-widest mb-1.5" style={{ color: "#555" }}>Why it worked</p>
-                  <p className="text-xs italic leading-relaxed" style={{ color: "#888" }}>{heroReel.insight}</p>
+              <div className="p-7 sm:p-10 flex flex-col justify-center">
+                <div className="text-6xl sm:text-7xl font-black leading-none mb-1"
+                  style={{ background: "linear-gradient(135deg,#fff,#a78bfa)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                  {heroReel.views}
                 </div>
+                <div className="text-sm mb-6" style={{ color: "#555" }}>{heroReel.viewsLabel}</div>
+                <p className="text-lg sm:text-xl font-medium leading-relaxed mb-6" style={{ color: "#e0e0e0" }}>
+                  {heroReel.desc}
+                </p>
+                <div className="w-full h-px mb-6" style={{ background: "rgba(255,255,255,0.07)" }} />
+                <p className="text-[10px] font-bold uppercase tracking-widest mb-2" style={{ color: "#a78bfa" }}>Why it worked</p>
+                <p className="text-sm italic leading-relaxed" style={{ color: "#666" }}>{heroReel.insight}</p>
               </div>
             </div>
           </motion.div>
 
           {/* Grid of 3 */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {gridReels.map((reel, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.08, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 viewport={{ once: true }}
-                className="rounded-2xl overflow-hidden"
-                style={{ border: "0.5px solid #1e1e1e", background: "#111" }}
+                whileHover={{ y: -4 }}
+                className="group relative rounded-2xl overflow-hidden"
+                style={{ border: "1px solid rgba(255,255,255,0.06)", background: "linear-gradient(135deg,#111116,#0d0d12)" }}
               >
                 {/* Thumbnail */}
-                <div className="relative overflow-hidden" style={{ aspectRatio: "9/14" }}>
-                  <Image src={reel.thumbnail} alt={reel.desc} fill className="object-cover" />
+                <div className="relative overflow-hidden" style={{ aspectRatio: "9/13" }}>
+                  <Image src={reel.thumbnail} alt={reel.desc} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top,rgba(13,13,18,0.9) 0%,transparent 50%)" }} />
                   <PlayButton />
+                  <div className="absolute bottom-3 left-3">
+                    <span className="text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full"
+                      style={{ background: "rgba(0,0,0,0.6)", color: "#888", border: "0.5px solid #333", backdropFilter: "blur(8px)" }}>
+                      {reel.company}
+                    </span>
+                  </div>
                 </div>
 
                 {/* Body */}
-                <div className="p-4">
-                  <p className="text-[10px] font-medium uppercase tracking-wider mb-1" style={{ color: "#555" }}>{reel.company}</p>
-                  <div className="text-xl font-medium text-white mb-1">{reel.views}</div>
-                  <p className="text-xs font-medium leading-snug mb-3" style={{ color: "#ccc" }}>{reel.desc}</p>
-                  <div className="w-full h-px mb-3" style={{ background: "#222" }} />
-                  <p className="text-[10px] font-medium uppercase tracking-widest mb-1" style={{ color: "#555" }}>Why it worked</p>
-                  <p className="text-xs italic leading-relaxed" style={{ color: "#666" }}>{reel.insight}</p>
+                <div className="p-5">
+                  <div className="text-3xl font-black text-white mb-1"
+                    style={{ background: "linear-gradient(135deg,#fff,rgba(255,255,255,0.6))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                    {reel.views}
+                  </div>
+                  <p className="text-xs font-medium leading-snug mb-4" style={{ color: "#aaa" }}>{reel.desc}</p>
+                  <div className="w-full h-px mb-4" style={{ background: "rgba(255,255,255,0.06)" }} />
+                  <p className="text-[9px] font-bold uppercase tracking-widest mb-1.5" style={{ color: "#a78bfa" }}>Why it worked</p>
+                  <p className="text-xs italic leading-relaxed" style={{ color: "#555" }}>{reel.insight}</p>
                 </div>
               </motion.div>
             ))}
           </div>
 
           {/* Bottom quote */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center text-xs italic pt-8"
-            style={{ color: "#444" }}
+            className="text-center pt-12"
           >
-            "The best content doesn't feel like content."
-          </motion.p>
+            <p className="text-sm italic" style={{ color: "#333" }}>"The best content doesn't feel like content."</p>
+          </motion.div>
 
         </div>
       </section>
